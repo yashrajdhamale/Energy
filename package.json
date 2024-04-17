@@ -1,0 +1,23 @@
+{
+    "name": "Energy consumption monitoring",
+    "version": "1.0.0",
+    "description": "Energy profiling",
+    "main": "init.js",
+    "scripts": {
+        "start": "node init.js"
+    },
+    "author": "Nishat",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^0.23.0",
+        "chart.js": "^4.4.0",
+        "crypto": "^1.0.1",
+        "express": "^4.18.2",
+        "fs": "^0.0.1-security",
+        "http": "^0.0.1-security",
+        "papaparse": "^5.4.1",
+        "qs": "^6.11.2",
+        "readline-sync": "^1.4.10",
+        "socket.io": "^4.7.2"
+    }
+}

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Monitoring Dashboard</title>
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Link to Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        section {
+            text-align: match-parent;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .chart-container {
+            position: relative;
+        }
+
+        /* Style for the IT load and Non-IT load sections */
+        #dashboard>div {
+            margin: 20px;
+            padding: 15px;
+            border-radius: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+        td,
+        th {
+            border: 2px solid blue;
+        }
+        nav {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        table {
+            display: none;
+        }
+        :target {
+            display: block;
+        }
+        
+
+        
+        
+    </style>
+    
+</head>
+
+<body>
+    <header>
+        <h1>Energy Usage Tracker</h1>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#datasets">Datasets for seven days</a></li>
+                <li class="nav-item"><a class="nav-link" href="#total">Total result for seven days</a></li>
+                <li class="nav-item"><a class="nav-link" href="#load1">IT load page</a></li>
+                <li class="nav-item"><a class="nav-link" href="#load2">Non-IT load page</a></li>
+                <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home">
+        <h2>Welcome to the Energy Usage Tracker</h2>
+        <p>In this project, we have used the IoT (Internet of Things) technology to meticulously monitor the energy consumption of a infrastructure over the course of a week for multiple devices.</p>
+        <p>To monitor the energy consumption, we have used the Tuya smart energy monitor socket with the advantage of monitoring the volatge,current and power of certain IT and Non-IT devices.</p>
+        <p>By using the Tuya API, we have separately collected the data for seven days in seven separate files and displayed them on this webpage. We have utilized this data to generate energy trend charts. </p>
+        <p>Whether anyone is managing IT loads, non-IT loads, or monitoring daily datasets, our dashboard provides a comprehensive view to empower your energy management decisions.</p>
+    </section>
+
+    <!-- <section id="about">
+        <h2>About Us</h2>
+        <p>We are a dedicated team of four members to ensure the energy management.Our goal is to provide innovative solutions that empower organizations to monitor, analyze, and optimize their energy usage.</p>
+        <p>The Energy Monitoring Dashboard is designed to offer energy monitoring data,energy usage trends and actionable insights, helping businesses make informed decisions for a greener and more sustainable future.</p>
+
+    </section> -->
+
+    <section id="datasets">
+        <h2>Datasets for Seven Days</h2>
+        <p>These are the detailed datasets for each day over the past seven days. By using the energy consumption patterns from datasheets, we have created the energy usage trend charts and collected decisions for optimal energy management.</p>
+        <nav id="nav">
+
+        </nav>
+        <script src="./csv1.js"></script>
+      </section>
+      
+    
+  
+    <section id="total">
+        <h2>Total Result for Seven Days</h2>
+        <p>By observing the aggregated results of seven days from the energy datasheets and total energy consumption for the past seven days,the overall energy usage trends to make strategic decisions for better energy efficiency.</p>
+        <ul>
+            <li>In day 1,the total wattage is 817.30,total energy usage is 3.38 kwh and total operating cost is  81.21 taka</li>
+            <li>In day 2,the total wattage is 773.76,total energy usage is 3.20 kwh and total operating cost is  76.88 taka</li>
+            <li>In day 3,the total wattage is 704.34,total energy usage is 2.92 kwh and total operating cost is  69.98 taka</li>
+            <li>In day 4,the total wattage is 768.14,total energy usage is 3.18 kwh and total operating cost is  76.32taka</li>
+            <li>In day 5,the total wattage is 749.13,total energy usage is 3.10 kwh and total operating cost is  74.43 taka</li>
+            <li>In day 6,the total wattage is 673.96,total energy usage is 2.79 kwh and total operating cost is  66.96 taka</li>
+            <li>In day 7,the total wattage is 672.08,total energy usage is 2.78 kwh and total operating cost is  66.78 taka</li>
+            
+        </ul>
+        
+        
+    
+    </section>
+    
+  
+    <section id="load1">
+        <h2>IT Load Page</h2>
+        <p>This section provides information about the IT load, including energy usage data for IT devices and IT-related energy consumption.</p>
+
+        <ul>
+            <li>The datasheet of day1,day2,day3,day4 and day5 are taken by the IT devices such as laptop and computer.</li>
+            <li> The energy usage of day 1 is 3.38 kwh</li>
+            <li> The energy usage of day 2 is 3.20 kwh</li>
+            <li> The energy usage of day 3 is 2.92 kwh</li>
+            <li> The energy usage of day 4 is 3.18 kwh</li>
+            <li> The energy usage of day 5 is 3.10 kwh</li>
+            
+        </ul>
+    
+    </section>
+  
+    <section id="load2">
+        <h2>Non-IT Load Page</h2>
+        <p>This section provides information about the non-IT load, covering areas such as charger fan and lights and other non-IT equipment. Understanding non-IT energy consumption is crucial for a comprehensive energy management strategy.</p>
+        <ul>
+            <li>The datasheet of day6 and day7 are taken by the Non-IT devices such as charger fan and light.</li>
+            <li> The energy usage of day 6 is 2.79 kwh</li>
+            <li> The energy usage of day 7 is 2.78 kwh</li>
+        </ul>   
+    </section>
+  
+    <section id="dashboard">
+        <h2>Dashboard</h2>
+        <div class="chart-container">
+            <canvas id="energyChart"></canvas>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>IT Load</h3>
+                    <p>This section displays information about the IT load, including real-time data and historical trends. It helps organizations manage and optimize their IT-related energy consumption.</p>
+                    <!-- Add IT Load energy chart here -->
+                    <div class="chart-container">
+                        <canvas id="itLoadChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3>Non-IT Load</h3>
+                    <p>Explore details about the non-IT load, covering areas such as lighting, HVAC, and other non-IT equipment. Understanding non-IT energy consumption is crucial for a comprehensive energy management strategy.</p>
+                    <!-- Add Non-IT Load energy chart here -->
+                    <div class="chart-container">
+                        <canvas id="nonItLoadChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+  <!-- Link to Bootstrap JS and Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <script>
+      // Sample data for the line chart
+      var energyData = {
+          labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+          datasets: [{
+              label: "Energy Usage",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 2,
+              data: [3.38, 3.20, 2.92, 3.18, 3.10, 2.79, 2.78],
+          }],
+      };
+  
+      // Get the chart canvas
+      var ctx = document.getElementById("energyChart").getContext("2d");
+  
+      // Create the line chart
+      var energyChart = new Chart(ctx, {
+          type: "line",
+          data: energyData,
+          options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                  x: [{
+                      ticks: {
+                          beginAtZero: true,
+                      },
+                  }],
+                  y: [{
+                      ticks: {
+                          beginAtZero: true,
+                      },
+                  }],
+              },
+          },
+      });
+  </script>
+  <script>
+    // Sample data for the IT Load line chart
+    function createITLoadChart() {
+        var itLoadData = {
+            labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"],
+            datasets: [{
+                label: "IT Load Energy Usage",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 2,
+                data: [3.38, 3.20, 2.92, 3.18, 3.10],
+            }],
+        };
+
+        var itLoadCtx = document.getElementById("itLoadChart").getContext("2d");
+        var itLoadChart = new Chart(itLoadCtx, {
+            type: "line",
+            data: itLoadData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: [{
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    }],
+                    y: [{
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    }],
+                },
+            },
+        });
+    }
+
+    // Sample data for the Non-IT Load line chart
+    function createNonITLoadChart() {
+        var nonItLoadData = {
+            labels: ["Day 6", "Day 7"],
+            datasets: [{
+                label: "Non-IT Load Energy Usage",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 2,
+                data: [2.79, 2.78],
+            }],
+        };
+
+        var nonItLoadCtx = document.getElementById("nonItLoadChart").getContext("2d");
+        var nonItLoadChart = new Chart(nonItLoadCtx, {
+            type: "line",
+            data: nonItLoadData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: [{
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    }],
+                    y: [{
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    }],
+                },
+            },
+        });
+    }
+
+    // Call the functions to create the charts
+    createITLoadChart();
+    createNonITLoadChart();
+</script>
+
+  
+  
+  <footer style="background-color: #333; color: #fff; text-align: center; padding: 1em 0;">
+    <p>&copy; 2023 Energy Monitoring Dashboard. All rights reserved.</p>
+</footer>
+  </body>
+  
+  </html>
